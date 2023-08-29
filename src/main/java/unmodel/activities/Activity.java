@@ -1,6 +1,6 @@
-package firesat.activities;
+package unmodel.activities;
 
-import firesat.Mission;
+import unmodel.Mission;
 import gov.nasa.jpl.aerie.merlin.framework.annotations.ActivityType;
 import gov.nasa.jpl.aerie.merlin.framework.annotations.ActivityType.ControllableDuration;
 import gov.nasa.jpl.aerie.merlin.framework.annotations.ActivityType.EffectModel;
