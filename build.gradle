@@ -19,16 +19,21 @@ jar {
   }
 }
 
+Properties secrets = new Properties()
+if (rootProject.file("secrets.properties").exists()) {
+  secrets.load(rootProject.file("secrets.properties").newDataInputStream())
+}
+
 repositories {
   flatDir { dirs "$rootDir/third-party" }
   mavenCentral()
   maven {
       name = "GitHubPackages"
       url = "https://maven.pkg.github.com/nasa-ammos/aerie"
-        credentials {
-          username = System.getenv('GITHUB_USER')
-          password = System.getenv('GITHUB_TOKEN')
-        }
+      credentials {
+        username = secrets.getProperty("gpr.username") ?: System.getenv("GPR_USERNAME")
+        password = secrets.getProperty("gpr.token")    ?: System.getenv("GPR_TOKEN")
+      }
     }
 }
 
